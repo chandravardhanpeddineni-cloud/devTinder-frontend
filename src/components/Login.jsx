@@ -1,19 +1,26 @@
 import {useState} from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
 
   const [emailId, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleLogin = async () => {
       try{
-        const res = await axios.post('http://localhost:3000/login', {
+        const res = await axios.post(import.meta.env.VITE_API + '/login', {
         emailId,
         password
       },{ withCredentials: true });
-      console.log(res.data);
+      // console.log(res.data);
+      dispatch({type: 'user/loginSuccess', payload: res.data});
+      navigate('/');
+
     }catch(err){
-      console.log(err);
+      // console.log(err);
+      dispatch({type: 'user/loginFailure', payload: err.response.data}); 
     }
   }
 

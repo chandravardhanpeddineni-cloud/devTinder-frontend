@@ -13,7 +13,12 @@
 - Install axios
 - CORS - install cors in backend add middle to app with configurations: origin and credentials
 - when ever you are making a api call so pass axios=>{withCredentails=true}
-
+- Install @reduxjs/toolkit react-redux
+- Create a utils folder in that create configureStore(appStore) and create a userSlice add actions and export reducer and actions 
+- Add reducer to store 
+- Add reduxDev tools and Login and see the is coming from the backend 
+- NavBar should update when the user login
+- User login the Navigate to Feed page
 
 
 
