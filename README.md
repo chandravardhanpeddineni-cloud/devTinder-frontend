@@ -19,8 +19,10 @@
 - Add reduxDev tools and Login and see the is coming from the backend 
 - NavBar should update when the user login
 - User login the Navigate to Feed page
-
-
+- Without Login you couldn't able to access other routes
+- If token is not present, redirect to login page
+- Logout
+- Profile Page
 
 
 
