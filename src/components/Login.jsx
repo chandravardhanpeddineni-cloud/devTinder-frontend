@@ -6,6 +6,7 @@ const Login = () => {
 
   const [emailId, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogin = async () => {
@@ -14,12 +15,12 @@ const Login = () => {
         emailId,
         password
       },{ withCredentials: true });
-      // console.log(res.data);
+
       dispatch({type: 'user/loginSuccess', payload: res.data});
-      navigate('/');
+      return navigate('/');
 
     }catch(err){
-      // console.log(err);
+      setError(err?.response?.data || "Something went wrong");
       dispatch({type: 'user/loginFailure', payload: err.response.data}); 
     }
   }
@@ -45,6 +46,7 @@ const Login = () => {
             />
           </fieldset>
           </div>
+          <p className='text-red-500'>{error}</p>
           <div className="card-actions m-auto">
             <button className="btn btn-primary rounded-xl" onClick={handleLogin}>Login</button>
           </div>
@@ -55,3 +57,4 @@ const Login = () => {
 }
 
 export default Login
+ 
