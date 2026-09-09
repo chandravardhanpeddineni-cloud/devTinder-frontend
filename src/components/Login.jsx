@@ -16,12 +16,12 @@ const Login = () => {
         password
       },{ withCredentials: true });
 
-      dispatch({type: 'user/loginSuccess', payload: res.data});
+      dispatch({type: 'user/success', payload: res.data});
       return navigate('/');
 
     }catch(err){
       setError(err?.response?.data || "Something went wrong");
-      dispatch({type: 'user/loginFailure', payload: err.response.data}); 
+      dispatch({type: 'user/failure', payload: err.response.data}); 
     }
   }
 

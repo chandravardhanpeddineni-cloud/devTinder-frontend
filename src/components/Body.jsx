@@ -3,7 +3,7 @@ import NavBar from "./NavBar"
 import Footer from "./Footer"
 import { useDispatch, useSelector } from "react-redux"
 import axios from 'axios'
-import { loginFailure } from "../utils/userSlice"
+import { failure } from "../utils/userSlice"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 const Body = () => {
@@ -13,16 +13,16 @@ const Body = () => {
 
   const fetchUser = async () =>{
       try{
-        dispatch({type: 'user/loginRequest'});
+        dispatch({type: 'user/request'});
         const user = await axios.get(import.meta.env.VITE_API + '/profile/view', {
           withCredentials: true,
         });
-      dispatch({type: 'user/loginSuccess', payload: user.data})
+      dispatch({type: 'user/success', payload: user.data})
       }catch(err) {
           if(err.response?.status === 401) {
               navigate('/login');
           }
-          dispatch(loginFailure(err));
+          dispatch(failure(err));
       }
   };
 

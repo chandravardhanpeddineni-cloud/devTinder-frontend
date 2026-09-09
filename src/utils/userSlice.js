@@ -11,16 +11,16 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        loginRequest: (state) => {
+        request: (state) => {
             state.loading = true;
             state.isAuthenticated = false;
         },
-        loginSuccess: (state, action) => {
+        success: (state, action) => {
             state.loading = false;
             state.isAuthenticated = true;
             state.user = action.payload;
         },
-        loginFailure: (state, action) => {
+        failure: (state, action) => {
             state.loading = false;
             state.isAuthenticated = false;
             state.user = null;
@@ -29,11 +29,10 @@ const userSlice = createSlice({
         logout: (state) => {
             state.loading = false;
             state.isAuthenticated = false;
-            state.user = null;
             state.error = null;
         }
     }
 });
 
-export const { loginRequest, loginSuccess, loginFailure, logout } = userSlice.actions;
+export const { request, success, failure, logout } = userSlice.actions;
 export default userSlice.reducer;

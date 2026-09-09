@@ -23,7 +23,11 @@
 - If token is not present, redirect to login page
 - Logout
 - Profile Page
-
+- Get the feed and add feed in the store
+- build the user card on the feed
+- Edit profile feature build 
+- show toast message on save
+- see all connections
 
 
 
