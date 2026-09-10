@@ -29,7 +29,11 @@
 - show toast message on save
 - new page - see all connections
 - new page - see all my requests to user
+- Feature - accept and reject connection request 
 
+- send or ignore the request user card from the feed
+- sign up page 
+- E2E testing
 
 
 

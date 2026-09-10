@@ -1,5 +1,21 @@
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
 const UserCard = ({ user }) => {
-    const {firstName, lastName, bio, age, gender, profilePicture} = user;
+
+    const { _id ,firstName, lastName, bio, age, gender, profilePicture} = user;
+    const dispatch = useDispatch();
+    const handleSendRequest = async(status, userId) => {
+      try{
+        const res = await axios.post(import.meta.env.VITE_API + `/request/send/${status}/${userId}`, {},{
+          withCredentials: true
+        })
+        console.log(res);
+        dispatch({type: 'feed/removeFeed', payload: userId})
+      }catch(err) {
+          console.log(err.response?.data);
+      }
+    }
+
   return (
     <div className="card bg-base-300 w-96 shadow-sm">
     <figure>
@@ -14,8 +30,8 @@ const UserCard = ({ user }) => {
         <p>{age + ", " + gender}</p>
         <p>{bio}</p>
         <div className="card-actions justify-center gap-4">
-        <button className="btn btn-primary">Ignore</button>
-        <button className="btn btn-secondary">Interested</button>
+        <button className="btn btn-primary" onClick={()=> handleSendRequest("ignore", _id)}>Ignore</button>
+        <button className="btn btn-secondary" onClick={() => handleSendRequest("interested", _id)}>Interested</button>
         </div>
     </div>
     </div>

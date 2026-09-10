@@ -3,7 +3,6 @@ import EditProfile from "./EditProfile"
 
 const Profile = () => {
   const user = useSelector((store) => store.user.user);  
-  console.log(user);
   return user && (
     <div>
       <EditProfile user = {user}/>
